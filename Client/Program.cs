@@ -1,7 +1,18 @@
 ﻿using Grpc.Net.Client;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Service;
 
-var channel = GrpcChannel.ForAddress("http://localhost:5043");
+var build = Host.CreateApplicationBuilder();
+
+//build.Configuration.AddJsonFile("appsettings.json", optional: false);
+
+var app = build.Build();
+
+var url = app.Services.GetService<IConfiguration>();
+
+var channel = GrpcChannel.ForAddress(url["RpcEndpoint"]);
 
 var client = new Greeter.GreeterClient(channel);
 
