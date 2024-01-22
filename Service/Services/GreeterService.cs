@@ -15,7 +15,7 @@ namespace Service.Services
         {
             return Task.FromResult(new HelloReply
             {
-                Message = "Hello " + request.Name
+                Message = $"Hello {request.Name}. You're {request.Age} years old!"
             });
         }
     }
