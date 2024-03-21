@@ -6,8 +6,6 @@ using Service;
 
 var build = Host.CreateApplicationBuilder();
 
-//build.Configuration.AddJsonFile("appsettings.json", optional: false);
-
 var app = build.Build();
 
 var url = app.Services.GetService<IConfiguration>();
