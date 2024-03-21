@@ -13,10 +13,16 @@ namespace Service.Services
 
         public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
         {
-            return Task.FromResult(new HelloReply
+            var names = request.Name.Split(" ");
+
+            var reply = new HelloReply
             {
                 Message = $"Hello {request.Name}. You're {request.Age} years old!"
-            });
+            };
+
+            reply.Names.AddRange(names);
+
+            return Task.FromResult(reply);
         }
     }
 }
