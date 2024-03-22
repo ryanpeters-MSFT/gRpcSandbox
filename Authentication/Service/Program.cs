@@ -30,8 +30,8 @@ builder.Services.AddAuthentication()
         {
             ValidateAudience = false,
             ValidateIssuer = false,
-            ValidateActor = false,
-            ValidateLifetime = true,
+            //ValidateActor = false,
+            //ValidateLifetime = true,
             IssuerSigningKey = securityKey
         };
     });

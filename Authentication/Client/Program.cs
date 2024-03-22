@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProtoBuf.Grpc.Client;
-using ProtoBuf.Grpc.Configuration;
 using System.Net;
 
 var builder = Host.CreateApplicationBuilder();
