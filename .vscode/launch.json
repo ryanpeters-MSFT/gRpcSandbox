@@ -1,0 +1,41 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "CodeFirst - Service",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-codefirst",
+            "program": "${workspaceFolder}/CodeFirst/Service/bin/Debug/net8.0/Service.dll",
+            "cwd": "${workspaceFolder}/CodeFirst/Service"
+        },
+        {
+            "name": "CodeFirst - Service (debug)",
+            "type": "coreclr",
+            "request": "attach"
+        },
+        {
+            "name": "CodeFirst - Client",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-codefirst",
+            "program": "${workspaceFolder}/CodeFirst/Client/bin/Debug/net8.0/Client.dll",
+            "cwd": "${workspaceFolder}/CodeFirst/Client"
+        },
+        {
+            "name": "CodeFirst - Client (debug)",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "CodeFirst",
+            "configurations": ["CodeFirst - Service", "CodeFirst - Client"]
+        },
+        {
+            "name": "CodeFirst (debug)",
+            "configurations": ["CodeFirst - Service (debug)", "CodeFirst - Client (debug)"]
+        }
+    ]
+}
