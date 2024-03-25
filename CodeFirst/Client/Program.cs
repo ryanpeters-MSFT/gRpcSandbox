@@ -9,9 +9,10 @@ var builder = Host.CreateApplicationBuilder();
 
 var app = builder.Build();
 
-var url = app.Services.GetService<IConfiguration>();
+var configuration = app.Services.GetService<IConfiguration>();
+var url = configuration["RpcEndpoint"];
 
-var channel = GrpcChannel.ForAddress(url["RpcEndpoint"]);
+var channel = GrpcChannel.ForAddress(url);
 
 var client = channel.CreateGrpcService<IGreeterService>();
 

@@ -8,9 +8,10 @@ var build = Host.CreateApplicationBuilder();
 
 var app = build.Build();
 
-var url = app.Services.GetService<IConfiguration>();
+var configuration = app.Services.GetService<IConfiguration>();
+var url = configuration["RpcEndpoint"];
 
-var channel = GrpcChannel.ForAddress(url["RpcEndpoint"]);
+var channel = GrpcChannel.ForAddress(url);
 
 var client = new Greeter.GreeterClient(channel);
 

@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProtoBuf.Grpc.Client;
-using System.Net;
 
 var builder = Host.CreateApplicationBuilder();
 
@@ -17,10 +16,10 @@ var url = configuration["RpcEndpoint"];
 // Authenticate to get JWT token
 var httpClient = new HttpClient
 {
-    DefaultRequestVersion = HttpVersion.Version30,
     DefaultVersionPolicy = HttpVersionPolicy.RequestVersionExact
 };
 
+// enforce a HTTP/2 request over TLS
 var request = new HttpRequestMessage(HttpMethod.Get, $"{url}/token/ryan")
 {
     Version = new Version(2, 0)
