@@ -5,6 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProtoBuf.Grpc.Client;
 
+Console.WriteLine("Waiting 2 seconds for service to become available...\n");
+Thread.Sleep(2000);
+
 var builder = Host.CreateApplicationBuilder();
 
 var app = builder.Build();

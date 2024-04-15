@@ -14,6 +14,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddCodeFirstGrpc();
 
+builder.Services.AddAuthentication().AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateAudience = false,
+        ValidateIssuer = false,
+        //ValidateActor = false,
+        //ValidateLifetime = true,
+        IssuerSigningKey = securityKey
+    };
+});
+
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy(JwtBearerDefaults.AuthenticationScheme, policy =>
@@ -22,19 +34,6 @@ builder.Services.AddAuthorization(options =>
         policy.RequireClaim(ClaimTypes.Name);
     });
 });
-
-builder.Services.AddAuthentication()
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateAudience = false,
-            ValidateIssuer = false,
-            //ValidateActor = false,
-            //ValidateLifetime = true,
-            IssuerSigningKey = securityKey
-        };
-    });
 
 var app = builder.Build();
 
