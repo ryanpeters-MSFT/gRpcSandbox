@@ -47,7 +47,9 @@ This example is a basic example of a client/server application, utilizing a shar
 
 ## [Code-First](./CodeFirst/)
 
-This example utilizes the community project [protobuf-net.Grpc](https://protobuf-net.github.io/protobuf-net.Grpc/) and WCF-friendly conventions to support a code-first implementation of gRPC.
+This example utilizes the community project [protobuf-net.Grpc](https://protobuf-net.github.io/protobuf-net.Grpc/) and WCF-friendly conventions to support a code-first implementation of gRPC. 
+
+This includes an example of using C# inheritance for the `HelloReply` type, which requires use of the `[ProtoContract]` (replacing `[DataContract]`) and `[ProtoMember]` (replacing `[DataMember]`) attributes, in addition to the `[ProtoInclude(2, typeof(HelloReply))]` attribute required on `BaseReply`.
 
 ## [Authentication](./Authentication/)
 
