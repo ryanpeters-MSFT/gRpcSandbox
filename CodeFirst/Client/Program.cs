@@ -21,7 +21,7 @@ var client = channel.CreateGrpcService<IGreeterService>();
 
 var reply = await client.SayHello(new HelloRequest { Name = "Ryan James Peters", Age = 40 });
 
-Console.WriteLine("Greeting: " + reply.Message);
+Console.WriteLine($"Greeting: {reply.Message} (ID: {reply.Id})");
 
 foreach (var name in reply.Names)
 {

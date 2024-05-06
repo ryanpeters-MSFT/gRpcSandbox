@@ -1,14 +1,14 @@
-﻿using System.Runtime.Serialization;
+﻿using ProtoBuf;
 
 namespace Common
 {
-    [DataContract]
-    public class HelloReply
+    [ProtoContract]
+    public class HelloReply : BaseReply
     {
-        [DataMember(Order = 1)]
+        [ProtoMember(1)]
         public string Message { get; set; }
 
-        [DataMember(Order = 2)]
+        [ProtoMember(2)]
         public ICollection<string> Names { get; set; }
     }
 }
